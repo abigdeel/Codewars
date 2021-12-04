@@ -397,14 +397,16 @@ function validParentheses(parens) {
 //// 5 Kyu | The Hashtag Generator
 
 function generateHashtag(str) {
-  hashtag = "#" + str
-    .split(" ")
-    .map((word) => {
-      if (word != "") {
-        return `${word[0].toUpperCase()}${word.slice(1)}`;
-      }
-    })
-    .join("");
+  hashtag =
+    "#" +
+    str
+      .split(" ")
+      .map((word) => {
+        if (word != "") {
+          return `${word[0].toUpperCase()}${word.slice(1)}`;
+        }
+      })
+      .join("");
   if (hashtag == "#" || hashtag.length > 140) {
     return false;
   } else {
@@ -412,9 +414,19 @@ function generateHashtag(str) {
   }
 }
 
-str = "code" + " ".repeat(140) + "wars";
-console.log(generateHashtag(str));
-
 ///////////////////////////////////////////////////////////////////
 
-//// 
+//// 4 kyu | Strip Comments
+
+function solution(input, markers) {
+  console.log(input, markers);
+  input = input.split("\n");
+  for (i = 0; i < input.length; i++) {
+    for (j = 0; j < markers.length; j++) {
+      if (input[i].indexOf(markers[j]) >= 0) {
+        input[i] = input[i].slice(0, input[i].indexOf(markers[j])).trim();
+      }
+    }
+  }
+  return input.join("\n");
+}
