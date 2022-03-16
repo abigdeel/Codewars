@@ -25,3 +25,23 @@ function isValidWalk(walk) {
 }
 
 console.log(isValidWalk("neswneswns"));
+
+/////////////////////////////////////////////////////////////////////
+
+function digPow(n, p) {
+  let sum = 0;
+  let k = 1;
+  for (i = 0; i < n.toString().length; i++) {
+    sum += Math.pow(n.toString()[i], p + i);
+  }
+
+  while (n * k <= sum) {
+    if (n * k === sum) {
+      return k;
+    }
+    k++;
+  }
+  return -1;
+}
+
+///////////////////////////////////////////////////////////////////////
