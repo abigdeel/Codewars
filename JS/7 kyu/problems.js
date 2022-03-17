@@ -63,5 +63,50 @@ function tribonacci(signature, n) {
 // 6 kyu | Find the missing letter
 
 function findMissingLetter(array) {
-  return " ";
+  for (i = 0; i < array.length; i++) {
+    if (array[i + 1].charCodeAt(0) - 1 > array[i].charCodeAt(0)) {
+      return String.fromCharCode(array[i].charCodeAt(0) + 1);
+    }
+  }
 }
+
+//////////////////////////////////////////////////////////////////////
+
+// 6 kyu | The Supermarket Queue
+
+function queueTime(customers, n) {
+  total = 0;
+  pos = 0;
+  tills = 0;
+  count = 0;
+
+  if (customers.length == 0) {
+    return 0;
+  }
+
+  while (count !== customers.length) {
+    if (customers[pos] > 0) {
+      if (tills == 0) {
+        total++;
+      }
+      customers[pos]--;
+      pos++;
+      tills++;
+    } else if (customers[pos] <= 0) {
+      count++;
+      pos++;
+    }
+
+    if (count == customers.length) {
+      return total;
+    }
+
+    if (tills == n || (n >= customers.length && tills == customers.length) || pos == customers.length) {
+      pos = 0;
+      tills = 0;
+      count = 0;
+    }
+  }
+}
+
+queueTime([2, 1, 4, 2, 5, 7], 2);
