@@ -13,43 +13,31 @@ function nbYear(p0, percent, aug, p) {
 
 var maxSequence = function (arr) {
   let currentmax = 0;
-  let pos = 0;
-  let neg = 0;
-  let finalmax = 0;
 
-  for (i = 1; i <= arr.length; i++) {
-    i--;
+  let finalmax = 0;
+  let i = 0;
+
+  while (i < arr.length) {
+    pos = 0;
     while (i < arr.length && arr[i] >= 0) {
       pos += arr[i];
       i++;
     }
+    currentmax += pos;
 
+    neg = 0;
     while (i < arr.length && arr[i] < 0) {
       neg += arr[i];
       i++;
     }
 
-    if (pos + neg >= 0) {
-      currentmax += pos + neg;
-      pos = pos + neg;
-    } else if (currentmax + neg < 0) {
-      currentmax += pos;
-      pos = 0;
-      finalmax = currentmax > finalmax ? currentmax : finalmax;
+    finalmax = currentmax > finalmax ? currentmax : finalmax;
+    if (currentmax + neg < 0) {
       currentmax = 0;
+    } else {
+      currentmax += neg;
     }
-
-
-    neg = 0;
   }
+
   return finalmax;
 };
-
-maxSequence([-2, 1, -3, 4, -1, 2, 1, -5, 4]);
-
-// i = 0;
-// arra = [];
-// while (i < arra.length) {
-//   console.log(arra[i]);
-//   i++;
-// }
