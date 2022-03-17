@@ -41,3 +41,27 @@ var maxSequence = function (arr) {
 
   return finalmax;
 };
+
+/////////////////////////////////////////////////////////////////////
+
+// 6 kyu | Tribonacci Sequence
+
+function tribonacci(signature, n) {
+  if (n == 0) {
+    return [];
+  } else {
+    for (i = 3; i < n; i++) {
+      signature[i] = signature[i - 1] + signature[i - 2] + signature[i - 3];
+    }
+  }
+
+  return signature.slice(0, n);
+}
+
+//////////////////////////////////////////////////////////////////////
+
+// 6 kyu | Find the missing letter
+
+function findMissingLetter(array) {
+  return " ";
+}
