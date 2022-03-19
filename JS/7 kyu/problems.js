@@ -109,4 +109,17 @@ function queueTime(customers, n) {
   }
 }
 
-queueTime([2, 1, 4, 2, 5, 7], 2);
+///////////////////////////////////////////////////////////////////
+
+// 5 kyu | String incrementer
+
+function incrementString(strng) {
+  if (Number.isInteger(strng[strng.length]) == false) {
+    return strng + "1";
+  } else {
+    for (i = strng.length; i > 0; i--) {
+      if (Number.isInteger(strng.length) == false) {
+      }
+    }
+  }
+}
