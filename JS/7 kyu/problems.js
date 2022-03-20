@@ -114,12 +114,28 @@ function queueTime(customers, n) {
 // 5 kyu | String incrementer
 
 function incrementString(strng) {
-  if (Number.isInteger(strng[strng.length]) == false) {
+  lastchar = 0;
+  numlength = 0;
+  lzeroes = 0;
+
+  if (isNaN(strng[strng.length - 1]) == true || strng.length == 0) {
     return strng + "1";
-  } else {
-    for (i = strng.length; i > 0; i--) {
-      if (Number.isInteger(strng.length) == false) {
-      }
+  } else if (isNaN(strng[strng.length - 1]) == false && strng.length == 1) {
+    return (parseInt(strng) + 1).toString();
+  }
+
+  for (i = 0; i < strng.length; i++) {
+    if (isNaN(strng[i]) == true) {
+      lastchar = i;
     }
   }
+
+  numlength = strng.length - lastchar - 1;
+  lzeroes = numlength - (parseInt(strng.slice(lastchar + 1, strng.length)) + 1).toString().length;
+
+  lzeroes = lzeroes < 0 ? 0 : lzeroes;
+
+  return strng.slice(0, lastchar + lzeroes + 1) + (parseInt(strng.slice(lastchar + 1, strng.length)) + 1).toString();
 }
+
+///////////////////////////////////////////////////////////////////////
