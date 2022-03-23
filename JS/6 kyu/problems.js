@@ -73,4 +73,48 @@ function isInteresting(number, awesomePhrases) {
   }
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+// 5 kyu | Scramblies
+
+// function scramble(str1, str2) {
+//   if (str2.length > str1.length) {
+//     return false;
+//   } else {
+//     for (i = 0; i < str2.length; i++) {
+//       if (str1.indexOf(str2[i]) < 0) {
+//         return false;
+//       } else {
+//         if (i == str2.length - 1) {
+//           return true;
+//         }
+//         str1 = str1.slice(0, str1.indexOf(str2[i])) + str1.slice(str1.indexOf(str2[i]) + 1, str1.length);
+//       }
+//     }
+//   }
+// }
+
+// Solution above is O(n^2). For loop and indexOf is O(n)
+// Below solution is O(n). reduce() is O(n) and nothing is nested.
+
+
+function scramble(str1, str2) {
+  letterbank = str1.split("").reduce((count, letter) => {
+    if (!count[letter]) {
+      count[letter] = 0;
+    }
+    count[letter]++;
+    return count;
+  }, {});
+
+  for (i = 0; i < str2.length; i++) {
+    if (!letterbank[str2[i]] || letterbank[str2[i]] == 0) {
+      return false;
+    } else if (i == str2.length - 1) {
+      return true;
+    }
+    letterbank[str2[i]]--;
+  }
+}
+
+console.log(scramble("boobsboobobosbssdfdsfbdobobsboobs", "boobs"));
