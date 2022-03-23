@@ -117,4 +117,4 @@ function scramble(str1, str2) {
   }
 }
 
-console.log(scramble("boobsboobobosbssdfdsfbdobobsboobs", "boobs"));
+console.log(scramble("asdlkjtevaflkbvsgtgbafinaagasd", "testing"));
