@@ -97,7 +97,6 @@ function isInteresting(number, awesomePhrases) {
 // Solution above is O(n^2). For loop and indexOf is O(n)
 // Below solution is O(n). reduce() is O(n) and nothing is nested.
 
-
 function scramble(str1, str2) {
   letterbank = str1.split("").reduce((count, letter) => {
     if (!count[letter]) {
@@ -117,4 +116,29 @@ function scramble(str1, str2) {
   }
 }
 
-console.log(scramble("asdlkjtevaflkbvsgtgbafinaagasd", "testing"));
+/////////////////////////////////////////////////////////////////////
+
+// 6 kyu | Write Number in Expanded Form
+
+function expandedForm(num) {
+  let expanded = "";
+  let numStr = num.toString();
+
+  if (num < 11) {
+    return numStr;
+  }
+
+  for (i = numStr.length - 1; i >= 0; i--) {
+    if (numStr[i] == "0") {
+      continue;
+    } else {
+      expanded = ((parseInt(numStr[i]) * Math.pow(10, numStr.length - i - 1)).toString() + " + ").concat(expanded);
+    }
+  }
+  expanded = expanded.slice(0, expanded.length - 3);
+  return expanded;
+}
+
+////////////////////////////////////////////////////////////////////
+
+// 
