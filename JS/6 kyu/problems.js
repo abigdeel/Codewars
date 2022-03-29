@@ -1,4 +1,4 @@
-// 6 kyu | Your order, please
+//// 6 kyu | Your order, please
 
 function order(words) {
   return words
@@ -11,7 +11,7 @@ words = "Thi2s i5s 3a t7est se9ntence ok1ay";
 
 ////////////////////////////////////////////////////////////////////////////////////
 
-// 4 kyu | Catching Car Mileage Numbers
+//// 4 kyu | Catching Car Mileage Numbers
 
 function isInteresting(number, awesomePhrases) {
   function nowOrSoon(number, awesomePhrases) {
@@ -75,7 +75,7 @@ function isInteresting(number, awesomePhrases) {
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 
-// 5 kyu | Scramblies
+//// 5 kyu | Scramblies
 
 // function scramble(str1, str2) {
 //   if (str2.length > str1.length) {
@@ -118,7 +118,7 @@ function scramble(str1, str2) {
 
 /////////////////////////////////////////////////////////////////////
 
-// 6 kyu | Write Number in Expanded Form
+//// 6 kyu | Write Number in Expanded Form
 
 function expandedForm(num) {
   let expanded = "";
@@ -141,4 +141,24 @@ function expandedForm(num) {
 
 ////////////////////////////////////////////////////////////////////
 
-// 
+//// 4 kyu | Range Extraction
+
+function solution(list) {}
+
+////////////////////////////////////////////////////////////////////
+
+//// 6 kyu | Who likes it?
+
+function likes(names) {
+  if (names.length == 0) {
+    return "no one likes this";
+  } else if (names.length == 1) {
+    return `${names[0]} likes this`;
+  } else if (names.length == 2) {
+    return `${names[0]} and ${names[1]} like this`;
+  } else if (names.length == 3) {
+    return `${names[0]}, ${names[1]} and ${names[2]} like this`;
+  } else {
+    return `${names[0]}, ${names[1]} and ${names.length - 2} others like this`;
+  }
+}
