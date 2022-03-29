@@ -162,3 +162,23 @@ function likes(names) {
     return `${names[0]}, ${names[1]} and ${names.length - 2} others like this`;
   }
 }
+
+///////////////////////////////////////////////////////////////////
+
+//// 6 kyu | Mexican Wave
+
+function wave(str) {
+  strWavy = [];
+  count = 0;
+  for (i = 0; i < str.length; i++) {
+    if (str[i].charCodeAt() >= 97 && str[i].charCodeAt() <= 122) {
+      strWavy[count] = str.slice(0, i) + str.slice(i, i + 1).toUpperCase() + str.slice(i + 1, str.length);
+      count++;
+    }
+  }
+  return strWavy;
+}
+
+console.log(wave("hello my"));
+
+// 97 122
