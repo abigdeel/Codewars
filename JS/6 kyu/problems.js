@@ -179,6 +179,16 @@ function wave(str) {
   return strWavy;
 }
 
-console.log(wave("hello my"));
+///////////////////////////////////////////////////////////////////
 
-// 97 122
+//// 6 kyu | Reverse every other word in the string
+
+function reverse(str) {
+  return str
+    .split(" ")
+    .map((word, index) => (index % 2 == 0 ? word : word.split("").reverse().join("")))
+    .join(" ")
+    .trim();
+}
+
+console.log(reverse("Testing this string, I am."));
