@@ -203,4 +203,3 @@ function count(string) {
   });
   return alphaCount;
 }
-
