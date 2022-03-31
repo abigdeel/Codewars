@@ -190,5 +190,17 @@ function reverse(str) {
     .join(" ")
     .trim();
 }
+reverse("Testing this string, I am.");
 
-console.log(reverse("Testing this string, I am."));
+///////////////////////////////////////////////////////////////////
+
+//// 6 kyu | Count characters in your string
+
+function count(string) {
+  alphaCount = {};
+  string.split("").map((char) => {
+    alphaCount[char] = alphaCount[char] + 1 || 1;
+  });
+  return alphaCount;
+}
+
