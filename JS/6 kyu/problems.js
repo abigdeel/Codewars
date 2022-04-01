@@ -203,3 +203,21 @@ function count(string) {
   });
   return alphaCount;
 }
+
+//////////////////////////////////////////////////////////////////
+
+//// 6 kyu | Delete occurrences of an element more than n times
+
+function deleteNth(arr, n) {
+  elementCount = {};
+  filteredNth = [];
+  arr.forEach((num) => {
+    elementCount[num] = elementCount[num] + 1 || 1;
+    if (elementCount[num] <= n) {
+      filteredNth.push(num);
+    }
+  });
+  return filteredNth;
+}
+
+console.log(deleteNth([1, 2, 5, 7, 1, 1, 2, 1, 2, 3, 1], 1));
