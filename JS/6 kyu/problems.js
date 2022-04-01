@@ -220,4 +220,18 @@ function deleteNth(arr, n) {
   return filteredNth;
 }
 
-console.log(deleteNth([1, 2, 5, 7, 1, 1, 2, 1, 2, 3, 1], 1));
+//////////////////////////////////////////////////////////////////
+
+//// 6 kyu | Find the odd int
+
+function findOdd(A) {
+  countA = {};
+  A.filter((num) => {
+    !countA[num] ? (countA[num] = 1) : delete countA[num];
+  });
+  return +Object.keys(countA);
+}
+
+////////////////////////////////////////////////////////////////
+
+//// 
