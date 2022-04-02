@@ -20,4 +20,19 @@ function getFileName(filename) {
 
 //////////////////////////////////////////////////////////////////////////////
 
-//// 
+//// 6 kyu | Meeting
+
+function meeting(s) {
+  return (
+    "(" +
+    s
+      .toUpperCase()
+      .split(";")
+      .map((fulln) => {
+        return fulln.split(":").reverse().join(", ");
+      })
+      .sort()
+      .join(")(") +
+    ")"
+  );
+}
