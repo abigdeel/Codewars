@@ -67,4 +67,42 @@ function workOnStrings(a, b) {
 
 ///////////////////////////////////////////////////////////////////////
 
-////
+//// 5 kyu | 80's Kids #6: Rock 'Em, Sock 'Em Robots
+
+function fight(robot1, robot2, tactics) {
+  turn = 0;
+  robot1.speed >= robot2.speed ? (first = robot1) : (first = robot2);
+  first == robot1 ? (second = robot2) : (second = robot1);
+
+  while (turn <= Math.max(robot1.tactics.length, robot2.tactics.length)) {
+    if (turn < first.tactics.length) {
+      second.health -= tactics[first.tactics[turn]];
+    }
+    if (second.health <= 0) {
+      break;
+    }
+    if (turn < second.tactics.length) {
+      first.health -= tactics[second.tactics[turn]];
+    }
+    if (first.health <= 0) {
+      break;
+    }
+    turn++;
+  }
+
+  if (robot1.health > robot2.health) {
+    return robot1.name + " has won the fight.";
+  } else if (robot1.health < robot2.health) {
+    return robot2.name + " has won the fight.";
+  } else {
+    return "The fight was a draw.";
+  }
+}
+
+robot1 = { name: "Rocky", health: 100, speed: 20, tactics: ["missile", "missile", "missile", "missile"] };
+robot2 = { name: "Missile Bob", health: 100, speed: 21, tactics: ["missile", "punch", "missile", "missile"] };
+tactics = { punch: 20, laser: 30, missile: 35 };
+
+///////////////////////////////////////////////////////////////////////
+
+//// 
