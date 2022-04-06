@@ -154,4 +154,25 @@ function damagedOrSunk(board, attacks) {
 
 ////////////////////////////////////////////////////////////////////////////
 
+//// 6 kyu | Find the Parity Outlier
+
+function findOutlier(integers) {
+  mod = [];
+  integers.slice(0, 3).forEach((int, index) => (mod[index] = Math.abs(int) % 2));
+
+  if (mod[0] == mod[2] && mod[0] != mod[1]) {
+    return integers[1];
+  } else if (mod[1] == mod[2] && mod[0] != mod[1]) {
+    return integers[0];
+  } else {
+    for (i = 2; i < integers.length; i++) {
+      if (Math.abs(integers[i]) % 2 != mod[0]) {
+        return integers[i];
+      }
+    }
+  }
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
 ////
