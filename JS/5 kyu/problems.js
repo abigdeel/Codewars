@@ -105,4 +105,53 @@ tactics = { punch: 20, laser: 30, missile: 35 };
 
 ///////////////////////////////////////////////////////////////////////
 
-//// 
+//// 5 kyu | Battle ships: Sunk damaged or not touched?
+
+function damagedOrSunk(board, attacks) {
+  boats = {};
+  score = {
+    sunk: 0,
+    damaged: 0,
+    notTouched: 0,
+  };
+  for (i = 0; i < board.length; i++) {
+    for (j = 0; j < board[i].length; j++) {
+      if (board[i][j] > 0) {
+        boats[board[i][j]] ? boats[board[i][j]].push([i, j]) : (boats[board[i][j]] = [[i, j]]);
+      }
+    }
+  }
+
+  score.notTouched = Object.keys(boats).length;
+  Object.keys(boats).forEach((key) => {
+    boats[`${key}size`] = boats[key].length;
+  });
+
+  for (i = 0; i < attacks.length; i++) {
+    xb = attacks[i][0] - 1;
+    yb = board.length - attacks[i][1];
+    pos = board[yb][xb];
+
+    if (pos > 0) {
+      if (boats[pos].length == boats[`${pos}size`]) {
+        score.notTouched--;
+        score.damaged++;
+      }
+      if (boats[pos].length == 1) {
+        delete boats[pos];
+        score.damaged--;
+        score.sunk++;
+      } else {
+        boats[pos].pop();
+      }
+    }
+    board[yb][xb] = 0;
+  }
+
+  score.points = score.damaged * 0.5 + score.sunk - score.notTouched;
+  return score;
+}
+
+////////////////////////////////////////////////////////////////////////////
+
+////
