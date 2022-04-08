@@ -175,4 +175,23 @@ function findOutlier(integers) {
 
 /////////////////////////////////////////////////////////////////////////////
 
+//// 6 kyu | Persistent Bugger
+
+function persistence(num) {
+  if (num < 10) {
+    return 0;
+  }
+  count = 0;
+  do {
+    num = num
+      .toString()
+      .split("")
+      .reduce((prod, digit) => prod * digit);
+    count++;
+  } while (num.toString().length > 1);
+  return count;
+}
+
+////////////////////////////////////////////////////////////////////////////
+
 ////
