@@ -194,4 +194,11 @@ function persistence(num) {
 
 ////////////////////////////////////////////////////////////////////////////
 
-////
+//// 6 kyu | Unique in Order
+
+var uniqueInOrder = function (iterable) {
+  iterable = !Array.isArray(iterable) ? iterable.split("") : iterable;
+  return iterable.filter((char, index, array) => {
+    return index == 0 || char !== array[index - 1];
+  });
+};
