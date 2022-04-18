@@ -202,3 +202,25 @@ var uniqueInOrder = function (iterable) {
     return index == 0 || char !== array[index - 1];
   });
 };
+
+////////////////////////////////////////////////////////////////////////////
+
+//// 6 kyu | Consecutive strings
+
+function longestConsec(strarr, k) {
+  if (strarr.length == 0 || k > strarr.length || k <= 0) {
+    return "";
+  }
+  startPos = 0;
+  for (i = 1; i < strarr.length; i++) {
+    if (strarr.slice(i, i + k).join("").length > strarr.slice(startPos, startPos + k).join("").length) {
+      startPos = i;
+    }
+  }
+
+  return strarr.slice(startPos, startPos + k).join("");
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
+//// 
