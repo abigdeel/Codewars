@@ -1,3 +1,34 @@
+//// Heap sort fun, slow with huge strings though
+
+function middlePermutation(s) {
+  hArr = Array(s.length).fill(0);
+  sPermute = [s];
+  i = 0;
+  num = 1;
+  sArr = s.split("");
+  while (i < s.length) {
+    if (hArr[i] < i) {
+      if (i % 2 == 0) {
+        sTemp = sArr[0];
+        sArr[0] = sArr[i];
+        sArr[i] = sTemp;
+      } else {
+        sTemp = sArr[hArr[i]];
+        sArr[hArr[i]] = sArr[i];
+        sArr[i] = sTemp;
+      }
+      sPermute[num] = sArr.join("");
+      num++;
+      hArr[i]++;
+      i = 0;
+    } else {
+      hArr[i] = 0;
+      i++;
+    }
+  }
+  // sPermute holds all permutations, not sorted
+}
+
 //// 6 kyu | extract file name
 
 function extractFileName(dirtyFileName) {
@@ -223,4 +254,51 @@ function longestConsec(strarr, k) {
 
 /////////////////////////////////////////////////////////////////////////////
 
-//// 
+//// 4 kyu | Nesting Structure Comparison
+
+Array.prototype.sameStructureAs = function (other) {
+  if (arr.length != other.length) {
+    return false;
+  } else {
+    for (i = 0; i < other.length; i++) {
+      if (this[i].length != other[i].length) {
+        return false;
+      }
+    }
+  }
+
+  return true;
+};
+
+// arr = [1, 1, [2, 2], 1];
+// test = [3, 3, [5, 5], 2];
+// console.log(test.sameStructureAs(arr));
+
+//////////////////////////////////////////////////////////
+
+//// 4 kyu | Simple Fun #159: Middle Permutation
+
+function middlePermutation(s) {
+  sArr = s.split("").sort();
+  sMid = [];
+
+  if (s.length % 2 == 0) {
+    sMid[0] = sArr[s.length / 2 - 1];
+    sArr.splice(s.length / 2 - 1, 1);
+    sMid += sArr.reverse().join("");
+  } else {
+    sMid = sArr
+      .slice((s.length - 1) / 2 - 1, (s.length - 1) / 2 + 1)
+      .reverse()
+      .join("");
+    sArr.splice((s.length - 1) / 2 - 1, 2);
+    sMid += sArr.reverse().join("");
+  }
+
+  return sMid;
+}
+
+s = "12345";
+console.log(middlePermutation(s));
+
+/////////////////////////////////////////////////////////////////////////
