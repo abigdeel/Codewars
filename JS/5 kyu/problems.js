@@ -298,7 +298,74 @@ function middlePermutation(s) {
   return sMid;
 }
 
-s = "12345";
-console.log(middlePermutation(s));
+// s = "12345";
+// console.log(middlePermutation(s));
 
 /////////////////////////////////////////////////////////////////////////
+
+//// 3 kyu | Rail Fence Cipher: Encoding and Decoding
+
+function encodeRailFenceCipher(string, numberRails) {
+  numberRails--;
+  strNum = 0;
+  railNum = 0;
+  rails = {};
+
+  while (strNum < string.length) {
+    !rails[`${Math.abs(railNum)}`]
+      ? (rails[`${Math.abs(railNum)}`] = string[strNum])
+      : (rails[`${Math.abs(railNum)}`] += string[strNum]);
+    strNum++;
+    if (Math.abs(railNum) == numberRails) {
+      railNum = -railNum;
+      railNum++;
+    } else {
+      railNum++;
+    }
+  }
+  return Object.values(rails).join("");
+}
+
+function decodeRailFenceCipher(string, numberRails) {
+  let decoded = string.split("");
+  numberRails--;
+  strNum = 0;
+  railNum = 0;
+  travel = 0;
+  railCount = 0;
+
+  for (i = 0; i < string.length; i++) {
+    pos = travel * numberRails + railCount;
+    decoded[pos] = string[strNum];
+    strNum++;
+
+    if (railNum == 0 || railNum % numberRails == 0) {
+      travel += 2;
+      if (pos + numberRails * 2 > string.length) {
+        travel = 0;
+        railNum++;
+      }
+    } else {
+      travel++;
+      if (pos + numberRails * 2 - railCount * 2 >= string.length) {
+        travel = 0;
+        railNum++;
+        if (railNum == numberRails) {
+          travel = 1;
+        }
+      }
+    }
+
+    if (travel % 2 == 0) {
+      railCount = railNum;
+    } else {
+      railCount = numberRails - railNum;
+    }
+  }
+  decoded = decoded.join("");
+  return decoded;
+}
+
+// string = "0123456789abc";
+// jumble = encodeRailFenceCipher(string, 4);
+// string = decodeRailFenceCipher(jumble, 4);
