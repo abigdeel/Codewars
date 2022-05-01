@@ -369,3 +369,8 @@ function decodeRailFenceCipher(string, numberRails) {
 // string = "0123456789abc";
 // jumble = encodeRailFenceCipher(string, 4);
 // string = decodeRailFenceCipher(jumble, 4);
+
+
+/////////////////////////////////////////////////////////////////////////
+
+//// 4 kyu | 4 By $ Skyscrapers
