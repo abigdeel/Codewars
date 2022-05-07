@@ -370,7 +370,26 @@ function decodeRailFenceCipher(string, numberRails) {
 // jumble = encodeRailFenceCipher(string, 4);
 // string = decodeRailFenceCipher(jumble, 4);
 
-
 /////////////////////////////////////////////////////////////////////////
 
 //// 4 kyu | 4 By $ Skyscrapers
+
+////////////////////////////////////////////////////////////////////
+
+//// 5 Kyu | Valid Parentheses
+
+function validParentheses(parens) {
+  count = 0;
+  for (i = 0; i < parens.length; i++) {
+    parens[i] == "(" ? count++ : parens[i] == ")" ? count-- : count;
+    if (count < 0) {
+      break;
+    }
+  }
+  if (count == 0) {
+    return true;
+  }
+  return false;
+}
+
+///////////////////////////////////////////////////////////////////////
