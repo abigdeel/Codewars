@@ -393,3 +393,28 @@ function validParentheses(parens) {
 }
 
 ///////////////////////////////////////////////////////////////////////
+
+//// 5 Kyu | The Hashtag Generator
+
+function generateHashtag(str) {
+  hashtag = "#" + str
+    .split(" ")
+    .map((word) => {
+      if (word != "") {
+        return `${word[0].toUpperCase()}${word.slice(1)}`;
+      }
+    })
+    .join("");
+  if (hashtag == "#" || hashtag.length > 140) {
+    return false;
+  } else {
+    return hashtag;
+  }
+}
+
+str = "code" + " ".repeat(140) + "wars";
+console.log(generateHashtag(str));
+
+///////////////////////////////////////////////////////////////////
+
+//// 
