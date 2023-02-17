@@ -1,0 +1,5 @@
+// 7 Kyu | The highest profit wins!
+
+function minMax(arr) {
+  return [Math.min(...arr), Math.max(...arr)];
+}
