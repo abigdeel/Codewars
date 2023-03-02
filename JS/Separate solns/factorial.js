@@ -1,6 +1,9 @@
 // 7 Kyu | Factorial
 
 function factorial(n) {
-  if (n < 0 || n > 12) throw new RangeError();
-  return n <= 1 ? 1 : n * factorial(n - 1);
+  let f = n;
+  for (i = n - 1; i > 0; i--) {
+    f = f * i;
+  }
+  return n == 0 ? 1 : f;
 }
